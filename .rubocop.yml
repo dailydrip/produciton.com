@@ -1,0 +1,175 @@
+# see https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+# for default configuration
+
+AllCops:
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
+  Exclude:
+    - vendor/**/*
+    - notes.*
+    - db/schema.rb
+    - spec/support/create_seed_topics_and_drips_service.rb
+    - spec/models/braintree_webhook_handler_spec.rb
+    - lib/tasks/subscription_reconciliation.rake
+    - config/routes.rb
+
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+
+Metrics/BlockNesting:
+  Enabled: true
+
+Metrics/BlockLength:
+  Enabled: true
+  Max: 50
+  Exclude:
+    - spec/**/*
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 80
+  Enabled: false
+
+Metrics/ModuleLength:
+  Max: 500
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  # http://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Metrics/PerceivedComplexity
+  Max: 20
+
+Style/RedundantReturn:
+  Enabled: false
+
+Naming/VariableName:
+  Enabled: true
+
+Style/GuardClause:
+  Enabled: false
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: true
+
+Naming/ClassAndModuleCamelCase:
+  Enabled: true
+
+Metrics/ClassLength:
+  Max: 260
+
+Metrics/ParameterLists:
+    Enabled: true
+
+# FIXME
+Style/RedundantSelf:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: true
+
+Style/Lambda:
+  Enabled: true
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
+Style/DefWithParentheses:
+  Enabled: false
+
+Rails/Exit:
+  Enabled: true
+
+Rails/OutputSafety:
+  Enabled: true
+
+Rails/Output:
+  Enabled: true
+
+Lint/DefEndAlignment:
+  Enabled: true
+
+Lint/EndAlignment:
+  Enabled: true
+
+Lint/Loop:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: true
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: true
+
+Lint/AssignmentInCondition:
+  Enabled: true
+
+Rails/Date:
+  # The value `always` disallows usage of `Date.today`, `Date.current`,
+  # `Date#to_time` etc.
+  # The value `acceptable` allows usage of `Date.current`, `Date.yesterday`, etc
+  # (but not `Date.today`) which are overriden by ActiveSupport to handle current
+  # time zone.
+  Enabled: acceptable
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: true
+
+Lint/RescueException:
+  Enabled: true
+
+Lint/HandleExceptions:
+  Enabled: true
+
+Style/CommandLiteral:
+  Description: 'Use `` or %x around command literals.'
+  Enabled: true
+
+Rails/TimeZone:
+ # The value `always` means that `Time` should be used with `zone`.
+ # The value `acceptable` allows usage of `in_time_zone` instead of `zone`.
+ Enabled: true
+ EnforcedStyle: flexible
+
+Style/MultilineBlockChain:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+CaseIndentation:
+  EnforcedStyle: end
+  IndentOneStep: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
