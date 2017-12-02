@@ -11,6 +11,8 @@ RSpec.describe Checklist, type: :model do
   end
 
   describe 'factory is ok' do
-    it { FactoryGirl.create(:checklist) }
+    it 'creates a checklist' do
+      expect(create(:checklist)).to be_a(Checklist)
+    end
   end
 end

@@ -9,6 +9,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'factory is ok' do
-    it { FactoryGirl.create(:user) }
+    it 'creates a user' do
+      expect(create(:user)).to be_a(User)
+    end
   end
 end
