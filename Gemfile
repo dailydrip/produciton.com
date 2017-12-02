@@ -8,10 +8,12 @@ end
 # Rubocop
 gem 'rubocop', '~> 0.51.0'
 
+# Active Admin
+gem 'activeadmin', '~> 1.1.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'pg'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
