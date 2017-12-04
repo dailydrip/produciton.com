@@ -1,0 +1,8 @@
+- content_for(:title, "Checklists")
+
+h2 Checklists
+h3 Here are some available checklists to start with
+
+ul.checklist-list
+  - @checklists.each do |checklist|
+    li= link_to checklist.title, checklist_path(checklist)
