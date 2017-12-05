@@ -8,6 +8,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to respond_to(:provider) }
   end
 
+  describe 'relations' do
+    it { is_expected.to have_many(:checklists) }
+  end
+
   describe 'factory is ok' do
     it 'creates a user' do
       expect(create(:user)).to be_a(User)
