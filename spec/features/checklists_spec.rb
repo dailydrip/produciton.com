@@ -9,16 +9,16 @@ RSpec.feature 'Checklists', type: :feature do
   scenario 'viewing a checklist' do
     visit checklist_path(ruby)
 
-    expect(page).to have_title("#{ruby} | Produciton")
-    expect(page).to have_incompleted_checklist_item(configure_ssl)
-    expect(page).to have_incompleted_checklist_item(set_up_cdn)
+    expect(page).to have_title("#{ruby.title} | Produciton")
+    expect(page).to have_uncompleted_checklist_item(configure_ssl)
+    expect(page).to have_uncompleted_checklist_item(set_up_cdn)
   end
 
   scenario 'completing a checklist item' do
     visit checklist_path(ruby)
     complete_checklist_item(configure_ssl)
 
-    expect(page).to have_incompleted_checklist_item(set_up_cdn)
+    expect(page).to have_uncompleted_checklist_item(set_up_cdn)
     expect(page).to have_completed_checklist_item(configure_ssl)
   end
 

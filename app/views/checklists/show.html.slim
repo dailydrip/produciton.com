@@ -1,0 +1,6 @@
+- content_for(:title, "#{@checklist.title} | Produciton")
+
+ul class="checklist-list"
+  - @checklist.checklist_items.each do |item|
+    li class="#{checklist_item_class(item)}"
+      = link_to item.title, '#'

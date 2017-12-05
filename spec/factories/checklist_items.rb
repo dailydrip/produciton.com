@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :checklist_item do
-    title "MyString"
+    title 'MyString'
     checklist nil
   end
 end
