@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   root to: 'checklists#index'
   resources :checklists
+  resources :checklist_items, only: [:update]
 end

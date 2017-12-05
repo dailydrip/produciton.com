@@ -4,3 +4,8 @@ ul class="checklist-list"
   - @checklist.checklist_items.each do |item|
     li class="#{checklist_item_class(item)}"
       = link_to item.title, '#'
+      = form_for item do |f|
+        = f.hidden_field :completed, {value: !item.completed}
+        = f.submit checklist_item_button(item), id: "complete-checklist-item-#{item.id}"
+  - if @checklist.all_done?
+    h3 Everything's finished!
