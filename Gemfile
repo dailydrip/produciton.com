@@ -29,6 +29,9 @@ gem 'omniauth-github', '~>1.3.0'
 
 gem 'devise', '~>4.3.0'
 
+# Paperclip
+gem 'paperclip', '~> 5.0.0'
+
 # Slim
 gem 'slim', '~> 3.0'
 
