@@ -5,6 +5,12 @@ class User < ApplicationRecord
 
   has_many :checklists, dependent: :destroy
 
+  def self.create_with_password(email: new_email)
+    user = User.new(email: email)
+    user.password = Devise.friendly_token[0, 20]
+    user.save!
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
