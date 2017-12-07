@@ -1,5 +1,10 @@
 - content_for(:title, "#{@checklist.title} | Produciton")
 
+div
+  = form_tag checklist_shares_path
+    = text_field_tag :email,nil, {id: "share-checklist-email"}
+    = hidden_field_tag :checklist_id, @checklist.id
+    = submit_tag "Share", id: "share-checklist-#{@checklist.id}"
 ul class="checklist-list"
   - @checklist.checklist_items.each do |item|
     li class="#{checklist_item_class(item)}"

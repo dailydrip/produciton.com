@@ -9,6 +9,7 @@ class User < ApplicationRecord
     user = User.new(email: email)
     user.password = Devise.friendly_token[0, 20]
     user.save!
+    user
   end
 
   def self.from_omniauth(auth)

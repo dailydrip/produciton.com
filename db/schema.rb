@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205013108) do
+ActiveRecord::Schema.define(version: 20171206210212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20171205013108) do
     t.bigint "checklist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "accepted"
     t.index ["checklist_id"], name: "index_checklist_shares_on_checklist_id"
     t.index ["user_id"], name: "index_checklist_shares_on_user_id"
   end

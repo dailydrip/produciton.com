@@ -5,6 +5,7 @@ RSpec.feature 'Checklists', type: :feature do
   let!(:ruby) { create(:checklist, title: 'Ruby') }
   let!(:configure_ssl) { create(:checklist_item, title: 'Configure SSL', checklist: ruby) }
   let!(:set_up_cdn) { create(:checklist_item, title: 'Set up CDN', checklist: ruby) }
+  let(:user) { create(:user) }
 
   scenario 'viewing a checklist' do
     visit checklist_path(ruby)
@@ -30,16 +31,17 @@ RSpec.feature 'Checklists', type: :feature do
     expect(page).to have_text("Everything's finished!")
   end
 
-  pending 'implement' do
-    scenario 'sharing a checklist with another user' do
-      visit checklist_path(ruby)
-      share_checklist_with('bob@example.com')
-      expect(page).to have_pending_share_for('bob@example.com')
-      accept_share_for('bob@example.com', ruby)
-      visit checklist_path(ruby)
-      expect(page).to have_accepted_share_for('bob@example.com')
-    end
+  scenario 'sharing a checklist with another user' do
+    visit checklist_path(ruby)
+    log_in(user)
+    click_on(ruby.title)
+    share_checklist_with('bob@example.com')
+    expect(page).to have_pending_share_for('bob@example.com')
+    accept_share_for('bob@example.com', ruby)
+    expect(page).to have_accepted_share
+  end
 
+  pending 'implement' do
     scenario 'adding a checklist item' do
       visit checklist_path(ruby)
 

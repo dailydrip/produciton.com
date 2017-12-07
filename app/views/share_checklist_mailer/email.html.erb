@@ -5,5 +5,6 @@
 </p>
 
 <p>
-   You can log in in our system using GitHub and see the Checklist.
+  You can log in in our system using GitHub and see the Checklist.
+  <%=  link_to "Click here to accept", accept_checklist_url(email: @to_user.email, checklist_id: @checklist.id) %>
 </p>
