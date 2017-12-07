@@ -1,0 +1,7 @@
+h3= "New Item for #{@checklist.title}"
+
+= form_for([@checklist, @checklist_item]) do |f|
+  = f.text_field :title
+  = f.submit "Save"
+
+

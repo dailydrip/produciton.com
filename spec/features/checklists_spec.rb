@@ -41,15 +41,18 @@ RSpec.feature 'Checklists', type: :feature do
     expect(page).to have_accepted_share
   end
 
+  scenario 'adding a checklist item' do
+    visit checklist_path(ruby)
+    log_in(user)
+    click_on(ruby.title)
+    click_on('Add Item')
+
+    fill_in 'checklist_item_title', with: set_up_cdn.title
+    click_button 'Save'
+    expect(page).to have_uncompleted_checklist_item(set_up_cdn)
+  end
+
   pending 'implement' do
-    scenario 'adding a checklist item' do
-      visit checklist_path(ruby)
-
-      fill_in '#new_checklist_item_title', with: 'New Item'
-      click_button 'Add checklist item'
-      expect(page).to have_incompleted_checklist_item('New Item')
-    end
-
     scenario 'removing a checklist item' do
       visit checklist_path(ruby)
 

@@ -11,7 +11,7 @@ end
 
 RSpec::Matchers.define :have_uncompleted_checklist_item do |expected|
   match do |actual|
-    selector = 'ul.checklist-list > li.uncompleted > a'
+    selector = 'ul.checklist-list > li.uncompleted'
     expect(actual).to have_selector(selector, text: expected.title.to_s)
   end
 

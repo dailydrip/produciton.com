@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'checklists#index'
   get '/checklists/accept' => 'checklist_shares#accept', as: :accept_checklist
-  resources :checklists
-  resources :checklist_items, only: [:update]
+  resources :checklists do
+    resources :checklist_items
+  end
   resources :checklist_shares, only: [:create]
 end
