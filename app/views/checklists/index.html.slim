@@ -3,6 +3,7 @@
 h2 Checklists
 h3 Here are some available checklists to start with
 
-ul.checklist-list
+ul.checklist-list.pure-g
   - @checklists.each do |checklist|
-    li= link_to checklist.title, checklist_path(checklist)
+    li.checklist-item.pure-u-1
+      = link_to checklist.title, checklist_path(checklist)

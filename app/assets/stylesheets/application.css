@@ -10,10 +10,60 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
 .completed {
   text-decoration: line-through;
 }
+
+.pure-g {
+  display: flex;
+  background: rgb(250, 250, 250);
+  justify-content: center;
+  text-align: center;
+}
+
+.checklist-item {
+  padding: 1rem;
+}
+
+.checklist-item:hover {
+  background: white;
+}
+
+.alert {
+  padding: 1rem;
+}
+
+.button-xsmall {
+  font-size: 70% !important;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }

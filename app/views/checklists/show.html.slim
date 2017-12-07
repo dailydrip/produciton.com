@@ -1,16 +1,22 @@
 - content_for(:title, "#{@checklist.title} | Produciton")
 
-div
-  = form_tag checklist_shares_path
-    = text_field_tag :email,nil, {id: "share-checklist-email"}
+
+div class="pure-g"
+  = form_tag(checklist_shares_path, class: "pure-form")
+    = text_field_tag :email,nil, {placeholder: "Share this Checklist", id: "share-checklist-email"}
     = hidden_field_tag :checklist_id, @checklist.id
-    = submit_tag "Share", id: "share-checklist-#{@checklist.id}"
+    = submit_tag "Share", id: "share-checklist-#{@checklist.id}", class: "pure-button"
+    div class="pure-u-1"
+      h3
+        = @checklist.title
 ul class="checklist-list"
   - @checklist.checklist_items.each do |item|
-    li class="#{checklist_item_class(item)}"
-      = link_to item.title, '#'
-      = form_for item do |f|
-        = f.hidden_field :completed, {value: !item.completed}
-        = f.submit checklist_item_button(item), id: "complete-checklist-item-#{item.id}"
+    li class="#{checklist_item_class(item)} checklist-item pure-g"
+      div class="pure-u-1-2"
+        = link_to item.title, '#'
+      div class="pure-u-1-2"
+        = form_for item do |f|
+          = f.hidden_field :completed, {value: !item.completed}
+          = f.submit checklist_item_button(item), id: "complete-checklist-item-#{item.id}", class: "pure-button button-xsmall"
   - if @checklist.all_done?
     h3 Everything's finished!
