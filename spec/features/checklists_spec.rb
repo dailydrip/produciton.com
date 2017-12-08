@@ -9,6 +9,8 @@ RSpec.feature 'Checklists', type: :feature do
 
   scenario 'viewing a checklist' do
     visit checklist_path(ruby)
+    log_in(user)
+    visit checklist_path(ruby)
 
     expect(page).to have_title("#{ruby.title} | Produciton")
     expect(page).to have_uncompleted_checklist_item(configure_ssl)
@@ -17,6 +19,8 @@ RSpec.feature 'Checklists', type: :feature do
 
   scenario 'completing a checklist item' do
     visit checklist_path(ruby)
+    log_in(user)
+    visit checklist_path(ruby)
     complete_checklist_item(configure_ssl)
 
     expect(page).to have_uncompleted_checklist_item(set_up_cdn)
@@ -24,6 +28,8 @@ RSpec.feature 'Checklists', type: :feature do
   end
 
   scenario 'completing all checklist items' do
+    visit checklist_path(ruby)
+    log_in(user)
     visit checklist_path(ruby)
     complete_checklist_item(configure_ssl)
     complete_checklist_item(set_up_cdn)
@@ -52,27 +58,33 @@ RSpec.feature 'Checklists', type: :feature do
     expect(page).to have_uncompleted_checklist_item(set_up_cdn)
   end
 
-  pending 'implement' do
-    scenario 'removing a checklist item' do
-      visit checklist_path(ruby)
+  scenario 'removing a checklist item' do
+    visit checklist_path(ruby)
+    log_in(user)
+    click_on(ruby.title)
 
-      expect(page).to have_incompleted_checklist_item(ruby)
+    expect(page).to have_uncompleted_checklist_item(set_up_cdn)
+    within(checklist_item_selector(set_up_cdn)) do
+      click_on('Delete')
+    end
+    expect(page).not_to have_uncompleted_checklist_item(set_up_cdn)
+  end
 
-      within(checklist_item_selector(ruby)) do
-        click_button 'Remove checklist item'
-      end
-      expect(page).not_to have_incompleted_checklist_item(ruby)
+  scenario 'editing a checklist item title' do
+    visit checklist_path(ruby)
+    log_in(user)
+    click_on(ruby.title)
+
+    expect(page).to have_uncompleted_checklist_item(set_up_cdn)
+    edited_text = 'edited yay'
+    within(checklist_item_selector(set_up_cdn)) do
+      click_link 'Edit'
     end
 
-    scenario 'editing a checklist item title' do
-      visit checklist_path(ruby)
+    fill_in 'checklist_item_title', with: edited_text
+    click_on('Save')
 
-      expect(page).to have_incompleted_checklist_item(ruby)
-      within(checklist_item_selector(ruby)) do
-        click_link 'Edit'
-        fill_in '.checklist_item_title', with: 'Ruby 3'
-      end
-      expect(page).to have_incompleted_checklist_item('Ruby 3')
-    end
+    expect(page).to have_uncompleted_checklist_item(set_up_cdn.reload)
+    expect(page).to have_text edited_text
   end
 end

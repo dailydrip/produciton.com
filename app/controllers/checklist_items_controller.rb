@@ -1,5 +1,5 @@
 class ChecklistItemsController < ApplicationController
-  before_action :find_checklist, only: %i[new create]
+  before_action :find_checklist, only: %i[new create edit destroy]
 
   def new
     @checklist_item = ChecklistItem.new(checklist: @checklist)
@@ -10,6 +10,16 @@ class ChecklistItemsController < ApplicationController
     @checklist_item.checklist = @checklist
     @checklist_item.save!
     flash[:success] = 'Item created'
+    redirect_to @checklist
+  end
+
+  def edit
+    @checklist_item = @checklist.checklist_items.find(params[:id])
+  end
+
+  def destroy
+    @checklist_item = @checklist.checklist_items.find(params[:id])
+    @checklist_item.destroy
     redirect_to @checklist
   end
 

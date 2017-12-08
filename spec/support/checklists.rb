@@ -16,3 +16,7 @@ end
 def accept_share_for(email, checklist)
   visit accept_checklist_url(email: email, checklist_id: checklist.id)
 end
+
+def checklist_item_selector(item)
+  "#item-#{item.id}"
+end

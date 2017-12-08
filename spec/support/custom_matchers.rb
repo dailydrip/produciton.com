@@ -22,7 +22,7 @@ end
 
 RSpec::Matchers.define :have_completed_checklist_item do |expected|
   match do |actual|
-    selector = 'ul.checklist-list > li.completed > a'
+    selector = 'ul.checklist-list > li.completed'
     expect(actual).to have_selector(selector, text: expected.title.to_s)
   end
 
