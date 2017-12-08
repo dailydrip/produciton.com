@@ -9,7 +9,7 @@ div.pure-g
       h3
         = @checklist.title
       = link_to "Add Item", new_checklist_checklist_item_path(@checklist)
-ul.checklist-list
+ul.checklist-list.pure-menu-list
   - @checklist.checklist_items.each do |item|
     li.checklist-item{ class= checklist_item_class(item) }
       div.pure-u-1-2
@@ -17,6 +17,6 @@ ul.checklist-list
       div.pure-u-1-2
         = form_for([@checklist, item]) do |f|
           = f.hidden_field :completed, {value: !item.completed}
-          = f.submit checklist_item_button(item), id: "complete-checklist-item-#{item.id}", class: "pure-button button-xsmall"
+          = f.submit checklist_item_button(item), id: "complete-checklist-item-#{item.id}", class: "pure-button"
   - if @checklist.all_done?
     h3 Everything's finished!
