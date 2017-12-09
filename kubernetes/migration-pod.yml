@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: migration-pod
+  labels:
+    name: migration
+spec:
+  restartPolicy: Never
+  volumes:
+    - name: environment-variables
+      secret:
+        secretName: secrets
+  containers:
+    - name: migration
+      image: dailydrip/produciton:0.1
+      imagePullPolicy: Always
+      args: ["bundle", "exec", "rake", "db:migrate"]
+      volumeMounts:
+        - name: environment-variables
+          readOnly: true
+          mountPath: /root/.env

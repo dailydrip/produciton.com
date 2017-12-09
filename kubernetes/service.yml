@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: produciton
+spec:
+  selector:
+    app_name: produciton
+    app_version: "0.1"
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 3000
