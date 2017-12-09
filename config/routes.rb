@@ -2,5 +2,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { :omniauth_callbacks => 'callbacks' }
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'checklists#index'
+  get '/checklists/accept' => 'checklist_shares#accept', as: :accept_checklist
+  resources :checklists do
+    resources :checklist_items
+  end
+  resources :checklist_shares, only: [:create]
 end

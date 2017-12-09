@@ -8,6 +8,11 @@ RSpec.describe Checklist, type: :model do
 
   describe 'fields' do
     it { is_expected.to respond_to(:title) }
+    it { is_expected.to respond_to(:template) }
+  end
+
+  describe 'relations' do
+    it { is_expected.to have_many(:checklist_items) }
   end
 
   describe 'factory is ok' do

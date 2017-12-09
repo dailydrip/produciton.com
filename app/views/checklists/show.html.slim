@@ -1,0 +1,27 @@
+- content_for(:title, "#{@checklist.title} | Produciton")
+
+div.pure-g
+  = form_tag(checklist_shares_path, class: "pure-form")
+    = text_field_tag :email,nil, {placeholder: "Share this Checklist", id: "share-checklist-email"}
+    = hidden_field_tag :checklist_id, @checklist.id
+    = submit_tag "Share", id: "share-checklist-#{@checklist.id}", class: "pure-button"
+    div.pure-u-1
+      h3
+        = @checklist.title
+      = link_to "Add Item", new_checklist_checklist_item_path(@checklist)
+ul.checklist-list.pure-menu-list
+  - @checklist.checklist_items.each do |item|
+    li.checklist-item{ class=checklist_item_class(item) id="item-#{item.id}" }
+      div.pure-u-1-2
+        = link_to item.title, '#'
+      div.pure-u-1-2
+        = form_for([@checklist, item]) do |f|
+          = f.hidden_field :completed, {value: !item.completed}
+          = f.submit checklist_item_button(item), id: "complete-checklist-item-#{item.id}", class: "pure-button"
+        div
+          = link_to 'Edit', edit_checklist_checklist_item_path(@checklist, item)
+        div
+          = link_to 'Delete', checklist_checklist_item_path(@checklist, item),
+            method: :delete, id: "delete-#{item.id}", data: {confirm: 'Are you sure?'}
+  - if @checklist.all_done?
+    h3 Everything's finished!

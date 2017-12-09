@@ -29,6 +29,12 @@ gem 'omniauth-github', '~>1.3.0'
 
 gem 'devise', '~>4.3.0'
 
+# Paperclip
+gem 'paperclip', '~> 5.0.0'
+
+# Slim
+gem 'slim', '~> 3.0'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -50,6 +56,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'faker', '~> 1.8.4'
+  gem 'letter_opener'
   gem 'rspec-rails', '~> 3.7.1'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1.2'
