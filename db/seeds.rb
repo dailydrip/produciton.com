@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+c = Checklist.create(title: 'Ruby')
+c.checklist_items << ChecklistItem.create(title: 'First')
+c.checklist_items << ChecklistItem.create(title: 'Second')
