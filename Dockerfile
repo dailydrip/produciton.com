@@ -1,6 +1,6 @@
 FROM ruby:2.4.2
 
-ENV APP_HOME /myapp \
+ENV APP_HOME="/myapp" \
 	PGDBNAME="produciton" \
 	GITHUB_KEY="key" \
 	GITHUB_SECRET="secret" \
