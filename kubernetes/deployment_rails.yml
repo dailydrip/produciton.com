@@ -1,0 +1,52 @@
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  name: rails
+  labels:
+    app_name: produciton
+spec:
+  selector:
+    matchLabels:
+      app_name: produciton
+  replicas: 2
+  template:
+    metadata:
+      name: rails
+      labels:
+        app_name: produciton
+        tier: app
+    spec:
+      containers:
+      - name: rails
+        imagePullPolicy: Always
+        image: dailydrip/produciton:master
+        ports:
+        - name: rails
+          containerPort: 3000
+        env:
+        - name: PRODUCITON_EMAIL
+          value: "produciton@example.com"
+        - name: PGHOST
+          value: postgres
+        - name: PGDBNAME
+          value: produciton
+        - name: GITHUB_KEY
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: GITHUB_KEY
+        - name: GITHUB_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: GITHUB_SECRET
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: POSTGRES_USER
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: POSTGRES_PASSWORD

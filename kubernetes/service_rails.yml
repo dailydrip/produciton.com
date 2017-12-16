@@ -1,0 +1,14 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: produciton
+spec:
+  selector:
+    app_name: produciton
+    tier: app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: rails
