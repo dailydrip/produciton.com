@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations
+spec:
+  template:
+    metadata:
+      name: migrations
+    spec:
+      containers:
+      - name: migrations
+        imagePullPolicy: Always
+        image: dailydrip/produciton:master
+        command: ["/bin/bash", "-c", "bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed"]
+        env:
+        - name: PRODUCITON_EMAIL
+          value: "produciton@example.com"
+        - name: PGHOST
+          value: postgres
+        - name: PGDBNAME
+          value: produciton
+        - name: GITHUB_KEY
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: GITHUB_KEY
+        - name: GITHUB_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: GITHUB_SECRET
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: POSTGRES_USER
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: POSTGRES_PASSWORD
+      restartPolicy: Never

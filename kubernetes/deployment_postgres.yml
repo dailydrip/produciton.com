@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  name: postgres
+spec:
+  selector:
+    matchLabels:
+      tier: database
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        tier: database
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: postgres
+        image: postgres:9.6.6
+        ports:
+        - containerPort: 5432
+        env:
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/pgdata"
+        - name: POSTGRES_DB
+          value: produciton
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: produciton-secrets
+              key: POSTGRES_PASSWORD
+        volumeMounts:
+          - name: postgres-volume
+            mountPath: "/var/lib/postgresql/data"
+      volumes:
+      - name: postgres-volume
+        gcePersistentDisk:
+          fsType: ext4
+          pdName: postgres-volume
