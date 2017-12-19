@@ -1,0 +1,13 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres
+  labels:
+    tier: database
+spec:
+  ports:
+  - name: postgres
+    port: 5432
+  selector:
+    tier: database

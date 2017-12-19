@@ -1,3 +1,4 @@
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -5,10 +6,9 @@ metadata:
 spec:
   selector:
     app_name: produciton
-    app_version: "0.1"
-  type: NodePort
+    tier: app
+  type: LoadBalancer
   ports:
-  - name: http
-    protocol: TCP
-    port: 8080
-    targetPort: 3000
+  - protocol: TCP
+    port: 80
+    targetPort: rails
