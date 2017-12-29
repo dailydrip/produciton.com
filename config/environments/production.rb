@@ -91,5 +91,5 @@ Rails.application.configure do
 
   # lograge
   config.lograge.enabled = true
-  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.formatter = Lograge::Formatters::Json.new
 end
