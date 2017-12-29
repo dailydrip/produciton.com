@@ -20,3 +20,5 @@ test:
   <<: *default
   database: <%= ENV['PGDBNAME'] %>-test
 
+production:
+  url: <%= ENV['DATABASE_URL'] %>
