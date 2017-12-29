@@ -8,6 +8,9 @@ end
 # Rubocop
 gem 'rubocop', '~> 0.51.0'
 
+gem 'lograge'
+gem 'logstash-event'
+
 # Active Admin
 gem 'activeadmin', '~> 1.1.0'
 
