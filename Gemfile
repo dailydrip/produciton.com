@@ -11,6 +11,8 @@ gem 'rubocop', '~> 0.51.0'
 gem 'lograge'
 gem 'logstash-event'
 
+gem 'scout_apm'
+
 # Active Admin
 gem 'activeadmin', '~> 1.1.0'
 
