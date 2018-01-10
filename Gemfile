@@ -13,6 +13,8 @@ gem 'logstash-event'
 
 gem 'scout_apm'
 
+gem 'aws-healthcheck'
+
 # Active Admin
 gem 'activeadmin', '~> 1.1.0'
 

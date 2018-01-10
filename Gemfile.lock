@@ -56,6 +56,8 @@ GEM
       activesupport (>= 3.0.0)
     arel (8.0.0)
     ast (2.3.0)
+    aws-healthcheck (1.0.1)
+      rails (>= 3.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
@@ -342,6 +344,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 1.1.0)
+  aws-healthcheck
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
