@@ -51,6 +51,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'lograge'
 gem 'logstash-event'
 gem 'honeybadger', '~> 3.1'
+gem 'scout_apm'
+gem 'aws-healthcheck'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
