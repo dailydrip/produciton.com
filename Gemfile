@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Honeybadger
+gem 'honeybadger', '~> 3.1'
+
 # Rubocop
 gem 'rubocop', '~> 0.51.0'
 
