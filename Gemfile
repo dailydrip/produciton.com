@@ -8,6 +8,9 @@ end
 # Honeybadger
 gem 'honeybadger', '~> 3.1'
 
+# Faktory
+gem 'faktory_worker_ruby'
+
 # Rubocop
 gem 'rubocop', '~> 0.51.0'
 
@@ -74,6 +77,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'

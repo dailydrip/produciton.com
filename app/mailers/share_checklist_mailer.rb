@@ -1,8 +1,8 @@
 class ShareChecklistMailer < ApplicationMailer
-  def email(from_user, to_user, checklist)
-    @to_user = to_user
-    @from_user = from_user
-    @checklist = checklist
+  def email(from_id, to_id, checklist_id)
+    @to_user = User.find(to_id)
+    @from_user = User.find(from_id)
+    @checklist = Checklist.find(checklist_id)
     mail(
       from: Rails.application.secrets.produciton_email,
       to: @to_user.email,
