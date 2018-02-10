@@ -17,8 +17,8 @@ development:
   database: produciton_development
 
 test:
-  <<: *default
-  database: produciton_test
+  adapter: sqlite3
+  database: ":memory:"
 
 production:
   url: <%= ENV.fetch('DATABASE_URL') { '' } %>

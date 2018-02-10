@@ -67,6 +67,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'spinach-rails', '~> 0.2.1'
+  gem 'sqlite3'
 end
 
 group :development do
