@@ -3,10 +3,14 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Install phase
+      - echo Installing gems...
+      - bundle install --without development
+      - echo Creating database...
+      - RAILS_ENV=test bundle exec rake db:create db:schema:load
   build:
     commands:
-      - echo Build phase
+      - Running test suite...
+      - RAILS_ENV=test bundle exec rspec
   post_build:
     commands:
       - echo Post Build phase
