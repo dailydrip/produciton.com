@@ -7,12 +7,10 @@ phases:
       - sudo apt-get update -y && sudo apt-get install -y nodejs
       - echo Installing gems...
       - bundle install --without development
-      - echo Creating database...
-      - RAILS_ENV=test bundle exec rake db:create db:schema:load
   build:
     commands:
       - Running test suite...
-      - RAILS_ENV=test bundle exec rspec
+      - bundle exec rspec
   post_build:
     commands:
       - echo Post Build phase
