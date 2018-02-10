@@ -3,6 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo Installing nodejs
+      - sudo apt-get install nodejs
       - echo Installing gems...
       - bundle install --without development
       - echo Creating database...
