@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ShareChecklistMailer, type: :mailer do
-  describe 'email' do
+  xdescribe 'email' do
     let(:from_user) { double('User', email: 'from@example.com') }
     let(:to_user) { double('User', email: 'to@example.org') }
     let(:checklist) { double('Checklist', id: 1) }
