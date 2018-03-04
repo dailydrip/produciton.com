@@ -17,8 +17,13 @@ development:
   database: <%= ENV['PGDBNAME'] %>-development
 
 test:
-  <<: *default
-  database: <%= ENV['PGDBNAME'] %>-test
+  adapter: sqlite3
+  database: ":memory:"
+  verbosity: quiet
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  username: "produciton_rds"
+  password: "password"
+  host: "produciton.c3ssrcrj9xkk.us-east-1.rds.amazonaws.com"
+  database: "produciton_production"

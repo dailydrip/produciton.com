@@ -12,16 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20171206210212) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.bigint "resource_id"
+    t.integer "resource_id"
     t.string "author_type"
-    t.bigint "author_id"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -31,7 +28,7 @@ ActiveRecord::Schema.define(version: 20171206210212) do
 
   create_table "checklist_items", force: :cascade do |t|
     t.string "title"
-    t.bigint "checklist_id"
+    t.integer "checklist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "completed"
@@ -43,8 +40,8 @@ ActiveRecord::Schema.define(version: 20171206210212) do
   end
 
   create_table "checklist_shares", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "checklist_id"
+    t.integer "user_id"
+    t.integer "checklist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "accepted"
@@ -57,7 +54,7 @@ ActiveRecord::Schema.define(version: 20171206210212) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "template"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["template"], name: "index_checklists_on_template"
     t.index ["title"], name: "index_checklists_on_title", unique: true
     t.index ["user_id"], name: "index_checklists_on_user_id"
@@ -83,8 +80,4 @@ ActiveRecord::Schema.define(version: 20171206210212) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "checklist_items", "checklists"
-  add_foreign_key "checklist_shares", "checklists"
-  add_foreign_key "checklist_shares", "users"
-  add_foreign_key "checklists", "users"
 end

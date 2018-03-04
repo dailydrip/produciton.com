@@ -25,6 +25,7 @@ gem 'aws-healthcheck'
 gem 'activeadmin', '~> 1.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'sqlite3'
 gem 'pg'
 gem 'rails', '~> 5.1.4'
 # Use Puma as the app server
