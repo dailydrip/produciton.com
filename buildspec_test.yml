@@ -1,0 +1,16 @@
+# buildspec_test.yml
+
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing nodejs
+      - sudo apt-get update -y && sudo apt-get install -y nodejs
+      - echo Installing gems...
+      - bundle install --without development
+  build:
+    commands:
+      - echo Running test suite...
+      - bundle exec rspec
+
